@@ -30,8 +30,9 @@ namespace mongodb
                 lista.Add(valuta);
             });
 
-            Label1.Text = str1;
-
+            //Label1.Text = str1;
+            GridView1.DataSource = lista;
+            GridView1.DataBind();
         }
     }
 }

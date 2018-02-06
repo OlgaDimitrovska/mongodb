@@ -14,6 +14,10 @@
         <p>
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         </p>
+        <p>
+            <asp:GridView ID="GridView1" runat="server">
+            </asp:GridView>
+        </p>
     </form>
 </body>
 </html>
