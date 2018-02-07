@@ -26,8 +26,8 @@ namespace mongodb
             IMongoCollection<Info> valuti = database.GetCollection<Info>("Valuti");
             valuti.Find(_ => true).ToList().ForEach(valuta =>
             {
-                str1 = str1 + valuta.Date + " "+ valuta.Valuta + " " + valuta.Kupoven + " " + valuta.Sreden + " " + valuta.Prodazen + "</br>";
-                if(Convert.ToDateTime(valuta.Date)==DateTime.Today)
+                //str1 = str1 + valuta.Date + " "+ valuta.Valuta + " " + valuta.Kupoven + " " + valuta.Sreden + " " + valuta.Prodazen + "</br>";
+                //if(Convert.ToDateTime(valuta.Date)==DateTime.Today)
                 lista.Add(valuta);
             });
 

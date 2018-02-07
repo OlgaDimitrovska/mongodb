@@ -22,6 +22,8 @@ namespace mongodb.Models
         public string Sreden { get; set; }
         [BsonElement("Продажен")]
         public string Prodazen { get; set; }
+        [BsonElement("Назив на Банка")]
+        public string Banka { get; set; }
 
     }
 }
