@@ -15,7 +15,11 @@ namespace mongodb
         string str1 = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                Tab1.CssClass = "Clicked";
+                MainView.ActiveViewIndex = 0;
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -34,6 +38,30 @@ namespace mongodb
             //Label1.Text = str1;
             GridView1.DataSource = lista;
             GridView1.DataBind();
+        }
+
+        protected void Tab1_Click(object sender, EventArgs e)
+        {
+            Tab1.CssClass = "Clicked";
+            Tab2.CssClass = "Initial";
+            Tab3.CssClass = "Initial";
+            MainView.ActiveViewIndex = 0;
+        }
+
+        protected void Tab2_Click(object sender, EventArgs e)
+        {
+            Tab1.CssClass = "Initial";
+            Tab2.CssClass = "Clicked";
+            Tab3.CssClass = "Initial";
+            MainView.ActiveViewIndex = 1;
+        }
+
+        protected void Tab3_Click(object sender, EventArgs e)
+        {
+            Tab1.CssClass = "Initial";
+            Tab2.CssClass = "Initial";
+            Tab3.CssClass = "Clicked";
+            MainView.ActiveViewIndex = 2;
         }
     }
 }
