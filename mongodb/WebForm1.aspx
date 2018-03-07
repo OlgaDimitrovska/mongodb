@@ -36,9 +36,19 @@
                   <td>
                     <h3>
                       <span>View 1</span></h3>
-                      <h3><span>&nbsp;<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+                      <h3><span style="text-align: center">&nbsp;<asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
                           <asp:GridView ID="GridView1" runat="server" style="text-align: left">
                           </asp:GridView>
+                          <asp:Chart ID="Chart1" runat="server">
+                              <Series>
+                                  <asp:Series Name="Series1">
+                                  </asp:Series>
+                              </Series>
+                              <ChartAreas>
+                                  <asp:ChartArea Name="ChartArea1">
+                                  </asp:ChartArea>
+                              </ChartAreas>
+                          </asp:Chart>
                           </span></h3>
                   </td>
                 </tr>

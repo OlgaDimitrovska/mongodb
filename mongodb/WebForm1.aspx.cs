@@ -38,6 +38,11 @@ namespace mongodb
             //Label1.Text = str1;
             GridView1.DataSource = lista;
             GridView1.DataBind();
+
+            Chart1.DataSource = lista;
+            Chart1.Series[0].XValueMember = "Valuta";
+            Chart1.Series[0].YValueMembers = "Sreden";
+            Chart1.DataBind();
         }
 
         protected void Tab1_Click(object sender, EventArgs e)
