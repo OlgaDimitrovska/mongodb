@@ -14,7 +14,7 @@ namespace mongodb.Models
         [BsonId]
         public ObjectId _id { get; set; }
 
-        [BsonElement("Name")]
+        [BsonElement("Назив на Банка")]
         public string Name { get; set; }
 
     }

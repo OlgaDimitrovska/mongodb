@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Web;
@@ -25,25 +26,38 @@ namespace mongodb
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            List<Info> lista = new List<Info>();
+            DataTable tabela = new DataTable();
             var server = new MongoClient(MongoUrl.Create("mongodb://localhost:27017"));
             IMongoDatabase database = server.GetDatabase("prvaDB");
             IMongoCollection<Info> valuti = database.GetCollection<Info>("Valuti");
+
+            //lista = valuti.Find(_ => true).ToList();
+            DataColumn dc1 = new DataColumn("Датум");
+            DataColumn dc2 = new DataColumn("Валута");
+            DataColumn dc3 = new DataColumn("Куповен");
+            DataColumn dc4 = new DataColumn("Продажен");
+            DataColumn dc5 = new DataColumn("Назив на Банка");
+            tabela.Columns.Add(dc1);
+            tabela.Columns.Add(dc2);
+            tabela.Columns.Add(dc3);
+            tabela.Columns.Add(dc4);
+            tabela.Columns.Add(dc5);
             valuti.Find(_ => true).ToList().ForEach(valuta =>
             {
                 //str1 = str1 + valuta.Date + " "+ valuta.Valuta + " " + valuta.Kupoven + " " + valuta.Sreden + " " + valuta.Prodazen + "</br>";
-                if(Convert.ToDateTime(valuta.Date)==DateTime.Today)
-                lista.Add(valuta);
+                if (Convert.ToString(valuta.Date) == "14.03.2018")
+                    tabela.Rows.Add(valuta.Date,valuta.Valuta,valuta.Kupoven,valuta.Prodazen,valuta.Banka.Name);
+                   
             });
 
             //Label1.Text = str1;
-            GridView1.DataSource = lista;
+            GridView1.DataSource = tabela;
             GridView1.DataBind();
 
-            Chart1.DataSource = lista;
-            Chart1.Series[0].XValueMember = "Valuta";
-            Chart1.Series[0].YValueMembers = "Sreden";
-            Chart1.DataBind();
+            //Chart1.DataSource = tabela;
+            //Chart1.Series[0].XValueMember = "Valuta";
+            //Chart1.Series[0].YValueMembers = "Sreden";
+            //Chart1.DataBind();
         }
 
         protected void Tab1_Click(object sender, EventArgs e)
