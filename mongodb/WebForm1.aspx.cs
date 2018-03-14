@@ -11,11 +11,13 @@ using mongodb.Models;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using MongoDB.Driver.Builders;
+using System.Threading;
 
 namespace mongodb
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+        CultureInfo currentUserCulture = Thread.CurrentThread.CurrentCulture;
         string str1 = "";
         protected void Page_Load(object sender, EventArgs e)
         {
