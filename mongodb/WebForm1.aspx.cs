@@ -32,7 +32,7 @@ namespace mongodb
             valuti.Find(_ => true).ToList().ForEach(valuta =>
             {
                 //str1 = str1 + valuta.Date + " "+ valuta.Valuta + " " + valuta.Kupoven + " " + valuta.Sreden + " " + valuta.Prodazen + "</br>";
-                if ((Convert.ToDateTime(valuta.Date) == DateTime.ParseExact(Convert.ToString(DateTime.Today), "dd.mm.yyyy", CultureInfo.InvariantCulture)))
+                if(Convert.ToDateTime(valuta.Date)==DateTime.Today)
                 lista.Add(valuta);
             });
 
