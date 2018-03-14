@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -31,7 +32,7 @@ namespace mongodb
             valuti.Find(_ => true).ToList().ForEach(valuta =>
             {
                 //str1 = str1 + valuta.Date + " "+ valuta.Valuta + " " + valuta.Kupoven + " " + valuta.Sreden + " " + valuta.Prodazen + "</br>";
-                if(Convert.ToDateTime(valuta.Date)==DateTime.Today)
+                if ((Convert.ToDateTime(valuta.Date) == DateTime.ParseExact(Convert.ToString(DateTime.Today), "dd.mm.yyyy", CultureInfo.InvariantCulture)))
                 lista.Add(valuta);
             });
 
