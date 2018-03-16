@@ -17,11 +17,11 @@ namespace mongodb.Models
         [BsonElement("Валута")]
         public string Valuta { get; set; }
         [BsonElement("Куповен")]
-        public string Kupoven { get; set; }
+        public double Kupoven { get; set; }
         [BsonElement("Среден")]
-        public string Sreden { get; set; }
+        public double Sreden { get; set; }
         [BsonElement("Продажен")]
-        public string Prodazen { get; set; }
+        public double Prodazen { get; set; }
         [BsonElement("Назив на Банка")]
         public Banki Banka { get; set; }
           
