@@ -12,6 +12,9 @@ using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using MongoDB.Driver.Builders;
 using System.Threading;
+using System.Linq.Expressions;
+using System.Collections.Specialized;
+using System.Collections;
 
 namespace mongodb
 {
@@ -433,24 +436,503 @@ namespace mongodb
 
         protected void GridView1_Sorting(object sender, GridViewSortEventArgs e)
         {
-            DataTable dtrslt = (DataTable)ViewState["dirState"];
-            if (dtrslt.Rows.Count > 0)
+            if (this.SortExpression.Equals(e.SortExpression))
             {
-                if (Convert.ToString(ViewState["sortdr"]) == "Asc")
-                {
-                    dtrslt.DefaultView.Sort = e.SortExpression + " Desc";
-                    ViewState["sortdr"] = "Desc";
-                }
-                else
-                {
-                    dtrslt.DefaultView.Sort = e.SortExpression + " Asc";
-                    ViewState["sortdr"] = "Asc";
-                }
-                GridView1.DataSource = dtrslt;
-                GridView1.DataBind();
+                this.SortDirection = (this.SortDirection == System.Web.UI.WebControls.SortDirection.Ascending)
+                    ? System.Web.UI.WebControls.SortDirection.Descending
+                    : System.Web.UI.WebControls.SortDirection.Ascending;
+            }
+            else
+            {
+                this.SortDirection = System.Web.UI.WebControls.SortDirection.Ascending;
+            }
+
+            this.SortExpression = e.SortExpression;
+
+            this.SetData();
 
 
+        }
+
+        protected void GridView2_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            if (this.SortExpression.Equals(e.SortExpression))
+            {
+                this.SortDirection = (this.SortDirection == System.Web.UI.WebControls.SortDirection.Ascending)
+                    ? System.Web.UI.WebControls.SortDirection.Descending
+                    : System.Web.UI.WebControls.SortDirection.Ascending;
+            }
+            else
+            {
+                this.SortDirection = System.Web.UI.WebControls.SortDirection.Ascending;
+            }
+
+            this.SortExpression = e.SortExpression;
+
+            this.SetData2();
+
+        }
+
+        protected void GridView3_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            if (this.SortExpression.Equals(e.SortExpression))
+            {
+                this.SortDirection = (this.SortDirection == System.Web.UI.WebControls.SortDirection.Ascending)
+                    ? System.Web.UI.WebControls.SortDirection.Descending
+                    : System.Web.UI.WebControls.SortDirection.Ascending;
+            }
+            else
+            {
+                this.SortDirection = System.Web.UI.WebControls.SortDirection.Ascending;
+            }
+
+            this.SortExpression = e.SortExpression;
+
+            this.SetData3();
+
+        }
+
+        protected void GridView4_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            if (this.SortExpression.Equals(e.SortExpression))
+            {
+                this.SortDirection = (this.SortDirection == System.Web.UI.WebControls.SortDirection.Ascending)
+                    ? System.Web.UI.WebControls.SortDirection.Descending
+                    : System.Web.UI.WebControls.SortDirection.Ascending;
+            }
+            else
+            {
+                this.SortDirection = System.Web.UI.WebControls.SortDirection.Ascending;
+            }
+
+            this.SortExpression = e.SortExpression;
+
+            this.SetData4();
+
+        }
+
+        protected void GridView5_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            if (this.SortExpression.Equals(e.SortExpression))
+            {
+                this.SortDirection = (this.SortDirection == System.Web.UI.WebControls.SortDirection.Ascending)
+                    ? System.Web.UI.WebControls.SortDirection.Descending
+                    : System.Web.UI.WebControls.SortDirection.Ascending;
+            }
+            else
+            {
+                this.SortDirection = System.Web.UI.WebControls.SortDirection.Ascending;
+            }
+
+            this.SortExpression = e.SortExpression;
+
+            this.SetData5();
+
+        }
+
+        protected void GridView6_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            if (this.SortExpression.Equals(e.SortExpression))
+            {
+                this.SortDirection = (this.SortDirection == System.Web.UI.WebControls.SortDirection.Ascending)
+                    ? System.Web.UI.WebControls.SortDirection.Descending
+                    : System.Web.UI.WebControls.SortDirection.Ascending;
+            }
+            else
+            {
+                this.SortDirection = System.Web.UI.WebControls.SortDirection.Ascending;
+            }
+
+            this.SortExpression = e.SortExpression;
+
+            this.SetData6();
+
+        }
+
+        protected void GridView7_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            if (this.SortExpression.Equals(e.SortExpression))
+            {
+                this.SortDirection = (this.SortDirection == System.Web.UI.WebControls.SortDirection.Ascending)
+                    ? System.Web.UI.WebControls.SortDirection.Descending
+                    : System.Web.UI.WebControls.SortDirection.Ascending;
+            }
+            else
+            {
+                this.SortDirection = System.Web.UI.WebControls.SortDirection.Ascending;
+            }
+
+            this.SortExpression = e.SortExpression;
+
+            this.SetData7();
+
+        }
+
+        protected void GridView8_Sorting(object sender, GridViewSortEventArgs e)
+        {
+            if (this.SortExpression.Equals(e.SortExpression))
+            {
+                this.SortDirection = (this.SortDirection == System.Web.UI.WebControls.SortDirection.Ascending)
+                    ? System.Web.UI.WebControls.SortDirection.Descending
+                    : System.Web.UI.WebControls.SortDirection.Ascending;
+            }
+            else
+            {
+                this.SortDirection = System.Web.UI.WebControls.SortDirection.Ascending;
+            }
+
+            this.SortExpression = e.SortExpression;
+
+            this.SetData8();
+
+        }
+
+        private string Sort
+        {
+            get
+            {
+                return String.Concat(
+                        this.SortExpression,
+                        (this.SortDirection == System.Web.UI.WebControls.SortDirection.Ascending) ? " ASC" : " DESC");
             }
         }
+
+        private System.Web.UI.WebControls.SortDirection SortDirection
+        {
+            get
+            {
+                if (ViewState["SortDirection"] == null)
+                {
+                    ViewState["SortDirection"] = System.Web.UI.WebControls.SortDirection.Ascending;
+                }
+
+                return (System.Web.UI.WebControls.SortDirection)ViewState["SortDirection"];
+            }
+            set { ViewState["SortDirection"] = value; }
+        }
+
+        private string SortExpression
+        {
+            get
+            {
+                if (ViewState["SortExpression"] == null)
+                {
+                    ViewState["SortExpression"] = "Kupoven";
+                }
+
+                return ViewState["SortExpression"].ToString();
+            }
+            set { ViewState["SortExpression"] = value; }
+        }
+
+        public void SetData()
+        {
+            var server = new MongoClient(MongoUrl.Create("mongodb://localhost:27017"));
+            IMongoDatabase database = server.GetDatabase("prvaDB");
+            var collection = database.GetCollection<Info>("Valuti");
+           
+           
+                try
+                {
+
+                DataTable tabela = new DataTable();
+                var query = from p in collection.AsQueryable<Info>() where p.Valuta == "eur" && p.Date == Calendar1.SelectedDate.ToString("dd.MM.yyyy") select p;
+
+                DataColumn dc1 = new DataColumn("Датум");
+                DataColumn dc5 = new DataColumn("Назив на Банка");
+                DataColumn dc2 = new DataColumn("Валута");
+                DataColumn dc3 = new DataColumn("Куповен");
+                DataColumn dc4 = new DataColumn("Продажен");
+
+                tabela.Columns.Add(dc1);
+                tabela.Columns.Add(dc5);
+                tabela.Columns.Add(dc2);
+                tabela.Columns.Add(dc3);
+                tabela.Columns.Add(dc4);
+
+                foreach (var t in query)
+                {
+                    tabela.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen);
+                }
+                DataView dv = tabela.DefaultView;
+                    dv.Sort = this.Sort;
+
+                    GridView1.DataSource = dv;
+                    GridView1.DataBind();
+                }
+                catch { }
+            }
+
+        public void SetData2()
+        {
+            var server = new MongoClient(MongoUrl.Create("mongodb://localhost:27017"));
+            IMongoDatabase database = server.GetDatabase("prvaDB");
+            var collection = database.GetCollection<Info>("Valuti");
+
+
+            try
+            {
+
+                DataTable tabela = new DataTable();
+                var query = from p in collection.AsQueryable<Info>() where p.Valuta == "usd" && p.Date == Calendar1.SelectedDate.ToString("dd.MM.yyyy") select p;
+
+                DataColumn dc1 = new DataColumn("Датум");
+                DataColumn dc5 = new DataColumn("Назив на Банка");
+                DataColumn dc2 = new DataColumn("Валута");
+                DataColumn dc3 = new DataColumn("Куповен");
+                DataColumn dc4 = new DataColumn("Продажен");
+
+                tabela.Columns.Add(dc1);
+                tabela.Columns.Add(dc5);
+                tabela.Columns.Add(dc2);
+                tabela.Columns.Add(dc3);
+                tabela.Columns.Add(dc4);
+
+                foreach (var t in query)
+                {
+                    tabela.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen);
+                }
+                DataView dv = tabela.DefaultView;
+                dv.Sort = this.Sort;
+
+                GridView2.DataSource = dv;
+                GridView2.DataBind();
+            }
+            catch { }
+        }
+
+        public void SetData3()
+        {
+            var server = new MongoClient(MongoUrl.Create("mongodb://localhost:27017"));
+            IMongoDatabase database = server.GetDatabase("prvaDB");
+            var collection = database.GetCollection<Info>("Valuti");
+
+
+            try
+            {
+
+                DataTable tabela = new DataTable();
+                var query = from p in collection.AsQueryable<Info>() where p.Valuta == "gbp" && p.Date == Calendar1.SelectedDate.ToString("dd.MM.yyyy") select p;
+
+                DataColumn dc1 = new DataColumn("Датум");
+                DataColumn dc5 = new DataColumn("Назив на Банка");
+                DataColumn dc2 = new DataColumn("Валута");
+                DataColumn dc3 = new DataColumn("Куповен");
+                DataColumn dc4 = new DataColumn("Продажен");
+
+                tabela.Columns.Add(dc1);
+                tabela.Columns.Add(dc5);
+                tabela.Columns.Add(dc2);
+                tabela.Columns.Add(dc3);
+                tabela.Columns.Add(dc4);
+
+                foreach (var t in query)
+                {
+                    tabela.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen);
+                }
+                DataView dv = tabela.DefaultView;
+                dv.Sort = this.Sort;
+
+                GridView3.DataSource = dv;
+                GridView3.DataBind();
+            }
+            catch { }
+        }
+
+        public void SetData4()
+        {
+            var server = new MongoClient(MongoUrl.Create("mongodb://localhost:27017"));
+            IMongoDatabase database = server.GetDatabase("prvaDB");
+            var collection = database.GetCollection<Info>("Valuti");
+
+
+            try
+            {
+
+                DataTable tabela = new DataTable();
+                var query = from p in collection.AsQueryable<Info>() where p.Valuta == "chf" && p.Date == Calendar1.SelectedDate.ToString("dd.MM.yyyy") select p;
+
+                DataColumn dc1 = new DataColumn("Датум");
+                DataColumn dc5 = new DataColumn("Назив на Банка");
+                DataColumn dc2 = new DataColumn("Валута");
+                DataColumn dc3 = new DataColumn("Куповен");
+                DataColumn dc4 = new DataColumn("Продажен");
+
+                tabela.Columns.Add(dc1);
+                tabela.Columns.Add(dc5);
+                tabela.Columns.Add(dc2);
+                tabela.Columns.Add(dc3);
+                tabela.Columns.Add(dc4);
+
+                foreach (var t in query)
+                {
+                    tabela.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen);
+                }
+                DataView dv = tabela.DefaultView;
+                dv.Sort = this.Sort;
+
+                GridView4.DataSource = dv;
+                GridView4.DataBind();
+            }
+            catch { }
+        }
+
+        public void SetData5()
+        {
+            var server = new MongoClient(MongoUrl.Create("mongodb://localhost:27017"));
+            IMongoDatabase database = server.GetDatabase("prvaDB");
+            var collection = database.GetCollection<Info>("Valuti");
+
+
+            try
+            {
+
+                DataTable tabela = new DataTable();
+                var query = from p in collection.AsQueryable<Info>() where p.Valuta == "gbp" && p.Date == Calendar1.SelectedDate.ToString("dd.MM.yyyy") select p;
+
+                DataColumn dc1 = new DataColumn("Датум");
+                DataColumn dc5 = new DataColumn("Назив на Банка");
+                DataColumn dc2 = new DataColumn("Валута");
+                DataColumn dc3 = new DataColumn("Куповен");
+                DataColumn dc4 = new DataColumn("Продажен");
+
+                tabela.Columns.Add(dc1);
+                tabela.Columns.Add(dc5);
+                tabela.Columns.Add(dc2);
+                tabela.Columns.Add(dc3);
+                tabela.Columns.Add(dc4);
+
+                foreach (var t in query)
+                {
+                    tabela.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen);
+                }
+                DataView dv = tabela.DefaultView;
+                dv.Sort = this.Sort;
+
+                GridView5.DataSource = dv;
+                GridView5.DataBind();
+            }
+            catch { }
+        }
+
+        public void SetData6()
+        {
+            var server = new MongoClient(MongoUrl.Create("mongodb://localhost:27017"));
+            IMongoDatabase database = server.GetDatabase("prvaDB");
+            var collection = database.GetCollection<Info>("Valuti");
+
+
+            try
+            {
+
+                DataTable tabela = new DataTable();
+                var query = from p in collection.AsQueryable<Info>() where p.Valuta == "nok" && p.Date == Calendar1.SelectedDate.ToString("dd.MM.yyyy") select p;
+
+                DataColumn dc1 = new DataColumn("Датум");
+                DataColumn dc5 = new DataColumn("Назив на Банка");
+                DataColumn dc2 = new DataColumn("Валута");
+                DataColumn dc3 = new DataColumn("Куповен");
+                DataColumn dc4 = new DataColumn("Продажен");
+
+                tabela.Columns.Add(dc1);
+                tabela.Columns.Add(dc5);
+                tabela.Columns.Add(dc2);
+                tabela.Columns.Add(dc3);
+                tabela.Columns.Add(dc4);
+
+                foreach (var t in query)
+                {
+                    tabela.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen);
+                }
+                DataView dv = tabela.DefaultView;
+                dv.Sort = this.Sort;
+
+                GridView6.DataSource = dv;
+                GridView6.DataBind();
+            }
+            catch { }
+        }
+
+        public void SetData7()
+        {
+            var server = new MongoClient(MongoUrl.Create("mongodb://localhost:27017"));
+            IMongoDatabase database = server.GetDatabase("prvaDB");
+            var collection = database.GetCollection<Info>("Valuti");
+
+
+            try
+            {
+
+                DataTable tabela = new DataTable();
+                var query = from p in collection.AsQueryable<Info>() where p.Valuta == "dkk" && p.Date == Calendar1.SelectedDate.ToString("dd.MM.yyyy") select p;
+
+                DataColumn dc1 = new DataColumn("Датум");
+                DataColumn dc5 = new DataColumn("Назив на Банка");
+                DataColumn dc2 = new DataColumn("Валута");
+                DataColumn dc3 = new DataColumn("Куповен");
+                DataColumn dc4 = new DataColumn("Продажен");
+
+                tabela.Columns.Add(dc1);
+                tabela.Columns.Add(dc5);
+                tabela.Columns.Add(dc2);
+                tabela.Columns.Add(dc3);
+                tabela.Columns.Add(dc4);
+
+                foreach (var t in query)
+                {
+                    tabela.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen);
+                }
+                DataView dv = tabela.DefaultView;
+                dv.Sort = this.Sort;
+
+                GridView7.DataSource = dv;
+                GridView7.DataBind();
+            }
+            catch { }
+        }
+
+        public void SetData8()
+        {
+            var server = new MongoClient(MongoUrl.Create("mongodb://localhost:27017"));
+            IMongoDatabase database = server.GetDatabase("prvaDB");
+            var collection = database.GetCollection<Info>("Valuti");
+
+
+            try
+            {
+
+                DataTable tabela = new DataTable();
+                var query = from p in collection.AsQueryable<Info>() where p.Valuta == "cad" && p.Date == Calendar1.SelectedDate.ToString("dd.MM.yyyy") select p;
+
+                DataColumn dc1 = new DataColumn("Датум");
+                DataColumn dc5 = new DataColumn("Назив на Банка");
+                DataColumn dc2 = new DataColumn("Валута");
+                DataColumn dc3 = new DataColumn("Куповен");
+                DataColumn dc4 = new DataColumn("Продажен");
+
+                tabela.Columns.Add(dc1);
+                tabela.Columns.Add(dc5);
+                tabela.Columns.Add(dc2);
+                tabela.Columns.Add(dc3);
+                tabela.Columns.Add(dc4);
+
+                foreach (var t in query)
+                {
+                    tabela.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen);
+                }
+                DataView dv = tabela.DefaultView;
+                dv.Sort = this.Sort;
+
+                GridView8.DataSource = dv;
+                GridView8.DataBind();
+            }
+            catch { }
+        }
+
+      
     }
+
 }
+   
+    
+
