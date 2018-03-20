@@ -65,10 +65,23 @@
                 <tr>
                   <td class="auto-style1">
                     <h3>
-                      <span>View 1</span></h3>
-                      <h3><span style="text-align: center">&nbsp;<asp:GridView ID="GridView1" runat="server" style="text-align: left" AllowSorting="True" OnSorting="GridView1_Sorting" >
-                          </asp:GridView>
-                          </span></h3>
+                        <span style="text-align: center">
+                        <asp:GridView ID="GridView1" runat="server" AllowSorting="True" OnSorting="GridView1_Sorting" style="text-align: left">
+                        </asp:GridView>
+                        </span></h3>
+                      <p>
+                          <asp:Chart ID="Chart1" runat="server" style="text-align: center" >
+                              <Series>
+                                  <asp:Series ChartType="Line" Name="Series1">
+                                  </asp:Series>
+                              </Series>
+                              <ChartAreas>
+                                  <asp:ChartArea Name="ChartArea1">
+                                  <AxisY  Minimum="61.500" Maximum="61.600" Interval="0.025"> </AxisY>
+                                  </asp:ChartArea>
+                              </ChartAreas>
+                          </asp:Chart>
+                      </p>
                   </td>
                 </tr>
               </table>
@@ -78,12 +91,9 @@
                 <tr>
                   <td class="auto-style2">
                     <h3>
-                      View 2
                         <asp:GridView ID="GridView2" runat="server" AllowSorting="True" OnSorting="GridView2_Sorting">
                         </asp:GridView>
                     </h3>
-                      <p>
-                          &nbsp;</p>
                   </td>
                 </tr>
               </table>
@@ -93,7 +103,6 @@
                 <tr>
                   <td>
                     <h3>
-                      View 3
                        
                         <asp:GridView ID="GridView3" runat="server" AllowSorting="True" OnSorting="GridView3_Sorting">
                         </asp:GridView>
@@ -107,7 +116,6 @@
                 <tr>
                   <td>
                     <h3>
-                      View 4
                         
                         <asp:GridView ID="GridView4" runat="server" AllowSorting="True" OnSorting="GridView4_Sorting">
                         </asp:GridView>
@@ -121,7 +129,6 @@
                 <tr>
                   <td>
                     <h3>
-                      View 5
                         
                         <asp:GridView ID="GridView5" runat="server" AllowSorting="True" OnSorting="GridView5_Sorting">
                         </asp:GridView>
@@ -135,7 +142,6 @@
                 <tr>
                   <td>
                     <h3>
-                      View 6
                         
                         <asp:GridView ID="GridView6" runat="server" AllowSorting="True" OnSorting="GridView6_Sorting">
                         </asp:GridView>
@@ -149,7 +155,6 @@
                 <tr>
                   <td>
                     <h3>
-                      View 7
                        
                         <asp:GridView ID="GridView7" runat="server" AllowSorting="True" OnSorting="GridView7_Sorting">
                         </asp:GridView>
@@ -163,7 +168,6 @@
                 <tr>
                   <td>
                     <h3>
-                      View 8
                         
                         <asp:GridView ID="GridView8" runat="server" AllowSorting="True" OnSorting="GridView8_Sorting">
                         </asp:GridView>

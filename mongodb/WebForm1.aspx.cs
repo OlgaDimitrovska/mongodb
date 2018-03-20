@@ -147,6 +147,7 @@ namespace mongodb
         public void Load1()
         {
             DataTable tabela = new DataTable();
+            DataTable tabela2 = new DataTable();
             var server = new MongoClient(MongoUrl.Create("mongodb://localhost:27017"));
             IMongoDatabase database = server.GetDatabase("prvaDB");
             var collection = database.GetCollection<Info>("Valuti");
@@ -156,24 +157,78 @@ namespace mongodb
             DataColumn dc5 = new DataColumn("Назив на Банка");
             DataColumn dc2 = new DataColumn("Валута");
             DataColumn dc3 = new DataColumn("Куповен");
+            DataColumn dc6 = new DataColumn("Среден");
             DataColumn dc4 = new DataColumn("Продажен");
+            
+
+
 
             tabela.Columns.Add(dc1);
             tabela.Columns.Add(dc5);
             tabela.Columns.Add(dc2);
             tabela.Columns.Add(dc3);
             tabela.Columns.Add(dc4);
+            tabela.Columns.Add(dc6);
 
             //postaviRegionalOptions();
             var query = from p in collection.AsQueryable<Info>() where p.Valuta == "eur" && p.Date == Calendar1.SelectedDate.ToString("dd.MM.yyyy") select p;
             foreach (var t in query)
             {
-                tabela.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen);
+
+              
+                    tabela.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen, t.Sreden);
+                
             }
 
             GridView1.DataSource = tabela;
             GridView1.DataBind();
+
+            DataColumn k1 = new DataColumn("Датум");
+            DataColumn k2 = new DataColumn("Назив на Банка");
+            DataColumn k3 = new DataColumn("Валута");
+            DataColumn k4 = new DataColumn("Куповен");
+            DataColumn k5 = new DataColumn("Среден");
+            DataColumn k6 = new DataColumn("Продажен");
+
+            tabela2.Columns.Add(k1);
+            tabela2.Columns.Add(k2);
+            tabela2.Columns.Add(k3);
+            tabela2.Columns.Add(k4);
+            tabela2.Columns.Add(k5);
+            tabela2.Columns.Add(k6);
+            var query2 = from p in collection.AsQueryable<Info>() where p.Valuta == "eur" select p;
+            foreach (var t in query2)
+            {
+
+                if (t.Date == null || t.Banka.Name == null || t.Valuta == null || t.Kupoven == 0 || t.Prodazen == 0 || t.Sreden==0)
+                {
+                }
+                else
+                {
+                    tabela2.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen, t.Sreden);
+                }
+            }
+
+            string[] x = new string[tabela2.Rows.Count];
+            double[] y = new double[tabela2.Rows.Count];
+
+            for (int i = 0; i < tabela2.Rows.Count; i++)
+            {
+                x[i] = tabela2.Rows[i][0].ToString();
+                y[i] = Convert.ToDouble(tabela2.Rows[i][5]);
+            }
+
+            DataView dv = tabela2.DefaultView;
+
+
+
+
+            Chart1.Series["Series1"].Points.DataBindXY(x,y);
+
         }
+
+
+
         public void Load2()
         {
             DataTable tabela = new DataTable();
