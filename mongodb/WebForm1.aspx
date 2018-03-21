@@ -7,6 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"/>
     <style type="text/css">
         .auto-style1 {
             width: 1036px;
@@ -14,13 +15,20 @@
         .auto-style2 {
             height: 201px;
         }
+       
     </style>
+   
+    <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
     <div style="text-align: center">
     </div>
-        <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" OnSelectionChanged="Calendar1_SelectionChanged" style="text-align: right" Width="200px" SelectedDate="03/16/2018 13:43:47">
+        <asp:Calendar CssClass="" ID="Calendar1" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" OnSelectionChanged="Calendar1_SelectionChanged" style="text-align: center" Width="200px" SelectedDate="03/16/2018 13:43:47">
             <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
             <NextPrevStyle VerticalAlign="Bottom" />
             <OtherMonthDayStyle ForeColor="#808080" />
@@ -35,9 +43,8 @@
          <table width="80%" align="center">
       <tr>
         <td>
-          <asp:Button Text="EUR" BorderStyle="None" ID="Tab1" CssClass="Initial" runat="server"
-
-              OnClick="Tab1_Click" />
+           <asp:Button Text="EUR" BorderStyle="None" ID="Tab1" CssClass="Clicked" runat="server"
+                OnClick="Tab1_Click" />
           <asp:Button Text="USD" BorderStyle="None" ID="Tab2" CssClass="Initial" runat="server"
 
               OnClick="Tab2_Click" />
@@ -61,7 +68,7 @@
               OnClick="Tab8_Click" />
           <asp:MultiView ID="MainView" runat="server">
             <asp:View ID="View1" runat="server" OnLoad="View1_Load">
-              <table style="width: 100%; border-width: 1px; border-color: #666; border-style: solid">
+              <table class="table-bordered table-hover" style="width: 100%; border-width: 1px; border-color: #666; border-style: solid">
                 <tr>
                   <td class="auto-style1">
                     <h3>
@@ -70,14 +77,14 @@
                         </asp:GridView>
                         </span></h3>
                       <p>
-                          <asp:Chart ID="Chart1" runat="server" style="text-align: center" >
+                          <asp:Chart ID="Chart1" runat="server" style="text-align: center" Width="1037px" >
                               <Series>
                                   <asp:Series ChartType="Line" Name="Series1">
                                   </asp:Series>
                               </Series>
                               <ChartAreas>
                                   <asp:ChartArea Name="ChartArea1">
-                                  <AxisY  Minimum="61.500" Maximum="61.600" Interval="0.025"> </AxisY>
+                                  <%--<AxisY  Minimum="Double.NaN" Maximum="Double.NaN"> </AxisY>--%>
                                   </asp:ChartArea>
                               </ChartAreas>
                           </asp:Chart>
@@ -90,10 +97,23 @@
               <table style="width: 100%; border-width: 1px; border-color: #666; border-style: solid">
                 <tr>
                   <td class="auto-style2">
-                    <h3>
-                        <asp:GridView ID="GridView2" runat="server" AllowSorting="True" OnSorting="GridView2_Sorting">
-                        </asp:GridView>
-                    </h3>
+                      <h3>
+                          <asp:GridView ID="GridView2" runat="server" AllowSorting="True" OnSorting="GridView2_Sorting">
+                          </asp:GridView>
+                      </h3>
+                      <p>
+                          <asp:Chart ID="Chart2" runat="server" style="text-align: center" Width="1037px">
+                              <Series>
+                                  <asp:Series ChartType="Line" Name="Series1">
+                                  </asp:Series>
+                              </Series>
+                              <ChartAreas>
+                                  <asp:ChartArea Name="ChartArea1">
+                                      <%--<AxisY  Minimum="Double.NaN" Maximum="Double.NaN"> </AxisY>--%>
+                                  </asp:ChartArea>
+                              </ChartAreas>
+                          </asp:Chart>
+                      </p>
                   </td>
                 </tr>
               </table>
@@ -107,6 +127,19 @@
                         <asp:GridView ID="GridView3" runat="server" AllowSorting="True" OnSorting="GridView3_Sorting">
                         </asp:GridView>
                     </h3>
+                      <p>
+                          <asp:Chart ID="Chart3" runat="server" style="text-align: center" Width="1037px">
+                              <Series>
+                                  <asp:Series ChartType="Line" Name="Series1">
+                                  </asp:Series>
+                              </Series>
+                              <ChartAreas>
+                                  <asp:ChartArea Name="ChartArea1">
+                                      <%--<AxisY  Minimum="Double.NaN" Maximum="Double.NaN"> </AxisY>--%>
+                                  </asp:ChartArea>
+                              </ChartAreas>
+                          </asp:Chart>
+                      </p>
                   </td>
                 </tr>
               </table>
@@ -120,6 +153,19 @@
                         <asp:GridView ID="GridView4" runat="server" AllowSorting="True" OnSorting="GridView4_Sorting">
                         </asp:GridView>
                     </h3>
+                      <p>
+                          <asp:Chart ID="Chart4" runat="server" style="text-align: center" Width="1037px">
+                              <Series>
+                                  <asp:Series ChartType="Line" Name="Series1">
+                                  </asp:Series>
+                              </Series>
+                              <ChartAreas>
+                                  <asp:ChartArea Name="ChartArea1">
+                                      <%--<AxisY  Minimum="Double.NaN" Maximum="Double.NaN"> </AxisY>--%>
+                                  </asp:ChartArea>
+                              </ChartAreas>
+                          </asp:Chart>
+                      </p>
                   </td>
                 </tr>
               </table>
@@ -133,6 +179,19 @@
                         <asp:GridView ID="GridView5" runat="server" AllowSorting="True" OnSorting="GridView5_Sorting">
                         </asp:GridView>
                     </h3>
+                      <p>
+                          <asp:Chart ID="Chart5" runat="server" style="text-align: center" Width="1037px">
+                              <Series>
+                                  <asp:Series ChartType="Line" Name="Series1">
+                                  </asp:Series>
+                              </Series>
+                              <ChartAreas>
+                                  <asp:ChartArea Name="ChartArea1">
+                                      <%--<AxisY  Minimum="Double.NaN" Maximum="Double.NaN"> </AxisY>--%>
+                                  </asp:ChartArea>
+                              </ChartAreas>
+                          </asp:Chart>
+                      </p>
                   </td>
                 </tr>
               </table>
@@ -146,6 +205,19 @@
                         <asp:GridView ID="GridView6" runat="server" AllowSorting="True" OnSorting="GridView6_Sorting">
                         </asp:GridView>
                     </h3>
+                      <p>
+                          <asp:Chart ID="Chart6" runat="server" style="text-align: center" Width="1037px">
+                              <Series>
+                                  <asp:Series ChartType="Line" Name="Series1">
+                                  </asp:Series>
+                              </Series>
+                              <ChartAreas>
+                                  <asp:ChartArea Name="ChartArea1">
+                                      <%--<AxisY  Minimum="Double.NaN" Maximum="Double.NaN"> </AxisY>--%>
+                                  </asp:ChartArea>
+                              </ChartAreas>
+                          </asp:Chart>
+                      </p>
                   </td>
                 </tr>
               </table>
@@ -159,6 +231,19 @@
                         <asp:GridView ID="GridView7" runat="server" AllowSorting="True" OnSorting="GridView7_Sorting">
                         </asp:GridView>
                     </h3>
+                      <p>
+                          <asp:Chart ID="Chart7" runat="server" style="text-align: center" Width="1037px">
+                              <Series>
+                                  <asp:Series ChartType="Line" Name="Series1">
+                                  </asp:Series>
+                              </Series>
+                              <ChartAreas>
+                                  <asp:ChartArea Name="ChartArea1">
+                                      <%--<AxisY  Minimum="Double.NaN" Maximum="Double.NaN"> </AxisY>--%>
+                                  </asp:ChartArea>
+                              </ChartAreas>
+                          </asp:Chart>
+                      </p>
                   </td>
                 </tr>
               </table>
@@ -172,6 +257,19 @@
                         <asp:GridView ID="GridView8" runat="server" AllowSorting="True" OnSorting="GridView8_Sorting">
                         </asp:GridView>
                     </h3>
+                      <p>
+                          <asp:Chart ID="Chart8" runat="server" style="text-align: center" Width="1037px">
+                              <Series>
+                                  <asp:Series ChartType="Line" Name="Series1">
+                                  </asp:Series>
+                              </Series>
+                              <ChartAreas>
+                                  <asp:ChartArea Name="ChartArea1">
+                                      <%--<AxisY  Minimum="Double.NaN" Maximum="Double.NaN"> </AxisY>--%>
+                                  </asp:ChartArea>
+                              </ChartAreas>
+                          </asp:Chart>
+                      </p>
                   </td>
                 </tr>
               </table>

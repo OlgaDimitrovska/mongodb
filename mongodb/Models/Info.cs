@@ -21,7 +21,7 @@ namespace mongodb.Models
         [BsonElement("Среден")]
         public double Sreden { get; set; }
         [BsonElement("Продажен")]
-        public double Prodazen { get; set; }
+        public Double Prodazen { get; set; }
         [BsonElement("Назив на Банка")]
         public Banki Banka { get; set; }
           

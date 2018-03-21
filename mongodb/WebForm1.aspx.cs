@@ -28,7 +28,7 @@ namespace mongodb
         {
             if (!IsPostBack)
             {
-                Tab1.CssClass = "Clicked";
+                Tab1.CssClass = "Clicked btn btn-primary";
                 MainView.ActiveViewIndex = 0;
                 //postaviRegionalOptions();
                
@@ -36,11 +36,9 @@ namespace mongodb
             }
         }
 
-       
-
         protected void Tab1_Click(object sender, EventArgs e)
         {
-            Tab1.CssClass = "Clicked";
+            Tab1.CssClass = "Clicked btn btn-primary";
             Tab2.CssClass = "Initial";
             Tab3.CssClass = "Initial";
             Tab4.CssClass = "Initial";
@@ -54,7 +52,7 @@ namespace mongodb
         protected void Tab2_Click(object sender, EventArgs e)
         {
             Tab1.CssClass = "Initial";
-            Tab2.CssClass = "Clicked";
+            Tab2.CssClass = "Clicked btn btn-primary";
             Tab3.CssClass = "Initial";
             Tab4.CssClass = "Initial";
             Tab5.CssClass = "Initial";
@@ -68,7 +66,7 @@ namespace mongodb
         {
             Tab1.CssClass = "Initial";
             Tab2.CssClass = "Initial";
-            Tab3.CssClass = "Clicked";
+            Tab3.CssClass = "Clicked btn btn-primary";
             Tab4.CssClass = "Initial";
             Tab5.CssClass = "Initial";
             Tab6.CssClass = "Initial";
@@ -82,7 +80,7 @@ namespace mongodb
             Tab1.CssClass = "Initial";
             Tab2.CssClass = "Initial";
             Tab3.CssClass = "Initial";
-            Tab4.CssClass = "Clicked";
+            Tab4.CssClass = "Clicked btn btn-primary";
             Tab5.CssClass = "Initial";
             Tab6.CssClass = "Initial";
             Tab7.CssClass = "Initial";
@@ -96,7 +94,7 @@ namespace mongodb
             Tab2.CssClass = "Initial";
             Tab3.CssClass = "Initial";
             Tab4.CssClass = "Initial";
-            Tab5.CssClass = "Clicked";
+            Tab5.CssClass = "Clicked btn btn-primary";
             Tab6.CssClass = "Initial";
             Tab7.CssClass = "Initial";
             Tab8.CssClass = "Initial";
@@ -110,7 +108,7 @@ namespace mongodb
             Tab3.CssClass = "Initial";
             Tab4.CssClass = "Initial";
             Tab5.CssClass = "Initial";
-            Tab6.CssClass = "Clicked";
+            Tab6.CssClass = "Clicked btn btn-primary";
             Tab7.CssClass = "Initial";
             Tab8.CssClass = "Initial";
             MainView.ActiveViewIndex = 5;
@@ -124,7 +122,7 @@ namespace mongodb
             Tab4.CssClass = "Initial";
             Tab5.CssClass = "Initial";
             Tab6.CssClass = "Initial";
-            Tab7.CssClass = "Clicked";
+            Tab7.CssClass = "Clicked btn btn-primary";
             Tab8.CssClass = "Initial";
             MainView.ActiveViewIndex = 6;
         }
@@ -138,7 +136,7 @@ namespace mongodb
             Tab5.CssClass = "Initial";
             Tab6.CssClass = "Initial";
             Tab7.CssClass = "Initial";
-            Tab8.CssClass = "Clicked";
+            Tab8.CssClass = "Clicked btn btn-primary";
             MainView.ActiveViewIndex = 7;
         }
 
@@ -157,7 +155,6 @@ namespace mongodb
             DataColumn dc5 = new DataColumn("Назив на Банка");
             DataColumn dc2 = new DataColumn("Валута");
             DataColumn dc3 = new DataColumn("Куповен");
-            DataColumn dc6 = new DataColumn("Среден");
             DataColumn dc4 = new DataColumn("Продажен");
             
 
@@ -168,7 +165,6 @@ namespace mongodb
             tabela.Columns.Add(dc2);
             tabela.Columns.Add(dc3);
             tabela.Columns.Add(dc4);
-            tabela.Columns.Add(dc6);
 
             //postaviRegionalOptions();
             var query = from p in collection.AsQueryable<Info>() where p.Valuta == "eur" && p.Date == Calendar1.SelectedDate.ToString("dd.MM.yyyy") select p;
@@ -176,7 +172,7 @@ namespace mongodb
             {
 
               
-                    tabela.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen, t.Sreden);
+                    tabela.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen);
                 
             }
 
@@ -217,20 +213,19 @@ namespace mongodb
                 x[i] = tabela2.Rows[i][0].ToString();
                 y[i] = Convert.ToDouble(tabela2.Rows[i][5]);
             }
-
-            DataView dv = tabela2.DefaultView;
-
-
-
-
+           
+            
             Chart1.Series["Series1"].Points.DataBindXY(x,y);
+            Chart1.Series["Series1"].IsValueShownAsLabel=true;
+            Chart1.ChartAreas[0].AxisY.Maximum = Double.NaN;
+            Chart1.ChartAreas[0].AxisY.IsStartedFromZero = false;
+            Chart1.ChartAreas[0].AxisY.Minimum = Double.NaN;
+            Chart1.ChartAreas[0].RecalculateAxesScale();
 
         }
-
-
-
         public void Load2()
         {
+            DataTable tabela2 = new DataTable();
             DataTable tabela = new DataTable();
             var server = new MongoClient(MongoUrl.Create("mongodb://localhost:27017"));
             IMongoDatabase database = server.GetDatabase("prvaDB");
@@ -258,9 +253,54 @@ namespace mongodb
 
             GridView2.DataSource = tabela;
             GridView2.DataBind();
+
+            DataColumn k1 = new DataColumn("Датум");
+            DataColumn k2 = new DataColumn("Назив на Банка");
+            DataColumn k3 = new DataColumn("Валута");
+            DataColumn k4 = new DataColumn("Куповен");
+            DataColumn k5 = new DataColumn("Среден");
+            DataColumn k6 = new DataColumn("Продажен");
+
+            tabela2.Columns.Add(k1);
+            tabela2.Columns.Add(k2);
+            tabela2.Columns.Add(k3);
+            tabela2.Columns.Add(k4);
+            tabela2.Columns.Add(k5);
+            tabela2.Columns.Add(k6);
+            var query2 = from p in collection.AsQueryable<Info>() where p.Valuta == "usd" select p;
+            foreach (var t in query2)
+            {
+
+                if (t.Date == null || t.Banka.Name == null || t.Valuta == null || t.Kupoven == 0 || t.Prodazen == 0 || t.Sreden == 0)
+                {
+                }
+                else
+                {
+                    tabela2.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen, t.Sreden);
+                }
+            }
+
+            string[] x = new string[tabela2.Rows.Count];
+            double[] y = new double[tabela2.Rows.Count];
+
+            for (int i = 0; i < tabela2.Rows.Count; i++)
+            {
+                x[i] = tabela2.Rows[i][0].ToString();
+                y[i] = Convert.ToDouble(tabela2.Rows[i][5]);
+            }
+
+
+            Chart2.Series["Series1"].Points.DataBindXY(x, y);
+            Chart2.Series["Series1"].IsValueShownAsLabel = true;
+            Chart2.ChartAreas[0].AxisY.Maximum = Double.NaN;
+            Chart2.ChartAreas[0].AxisY.IsStartedFromZero = false;
+            Chart2.ChartAreas[0].AxisY.Minimum = Double.NaN;
+            Chart2.ChartAreas[0].RecalculateAxesScale();
         }
         public void Load3()
         {
+
+            DataTable tabela2 = new DataTable();
             DataTable tabela = new DataTable();
             var server = new MongoClient(MongoUrl.Create("mongodb://localhost:27017"));
             IMongoDatabase database = server.GetDatabase("prvaDB");
@@ -288,9 +328,53 @@ namespace mongodb
 
             GridView3.DataSource = tabela;
             GridView3.DataBind();
+
+            DataColumn k1 = new DataColumn("Датум");
+            DataColumn k2 = new DataColumn("Назив на Банка");
+            DataColumn k3 = new DataColumn("Валута");
+            DataColumn k4 = new DataColumn("Куповен");
+            DataColumn k5 = new DataColumn("Среден");
+            DataColumn k6 = new DataColumn("Продажен");
+
+            tabela2.Columns.Add(k1);
+            tabela2.Columns.Add(k2);
+            tabela2.Columns.Add(k3);
+            tabela2.Columns.Add(k4);
+            tabela2.Columns.Add(k5);
+            tabela2.Columns.Add(k6);
+            var query2 = from p in collection.AsQueryable<Info>() where p.Valuta == "gbp" select p;
+            foreach (var t in query2)
+            {
+
+                if (t.Date == null || t.Banka.Name == null || t.Valuta == null || t.Kupoven == 0 || t.Prodazen == 0 || t.Sreden == 0)
+                {
+                }
+                else
+                {
+                    tabela2.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen, t.Sreden);
+                }
+            }
+
+            string[] x = new string[tabela2.Rows.Count];
+            double[] y = new double[tabela2.Rows.Count];
+
+            for (int i = 0; i < tabela2.Rows.Count; i++)
+            {
+                x[i] = tabela2.Rows[i][0].ToString();
+                y[i] = Convert.ToDouble(tabela2.Rows[i][5]);
+            }
+
+            Chart3.Series["Series1"].Points.DataBindXY(x, y);
+            Chart3.Series["Series1"].IsValueShownAsLabel = true;
+            Chart3.ChartAreas[0].AxisY.Maximum = Double.NaN;
+            Chart3.ChartAreas[0].AxisY.IsStartedFromZero = false;
+            Chart3.ChartAreas[0].AxisY.Minimum = Double.NaN;
+            Chart3.ChartAreas[0].RecalculateAxesScale();
         }
         public void Load4()
         {
+
+            DataTable tabela2 = new DataTable();
             DataTable tabela = new DataTable();
             var server = new MongoClient(MongoUrl.Create("mongodb://localhost:27017"));
             IMongoDatabase database = server.GetDatabase("prvaDB");
@@ -318,9 +402,53 @@ namespace mongodb
 
             GridView4.DataSource = tabela;
             GridView4.DataBind();
+
+            DataColumn k1 = new DataColumn("Датум");
+            DataColumn k2 = new DataColumn("Назив на Банка");
+            DataColumn k3 = new DataColumn("Валута");
+            DataColumn k4 = new DataColumn("Куповен");
+            DataColumn k5 = new DataColumn("Среден");
+            DataColumn k6 = new DataColumn("Продажен");
+
+            tabela2.Columns.Add(k1);
+            tabela2.Columns.Add(k2);
+            tabela2.Columns.Add(k3);
+            tabela2.Columns.Add(k4);
+            tabela2.Columns.Add(k5);
+            tabela2.Columns.Add(k6);
+            var query2 = from p in collection.AsQueryable<Info>() where p.Valuta == "chf" select p;
+            foreach (var t in query2)
+            {
+
+                if (t.Date == null || t.Banka.Name == null || t.Valuta == null || t.Kupoven == 0 || t.Prodazen == 0 || t.Sreden == 0)
+                {
+                }
+                else
+                {
+                    tabela2.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen, t.Sreden);
+                }
+            }
+
+            string[] x = new string[tabela2.Rows.Count];
+            double[] y = new double[tabela2.Rows.Count];
+
+            for (int i = 0; i < tabela2.Rows.Count; i++)
+            {
+                x[i] = tabela2.Rows[i][0].ToString();
+                y[i] = Convert.ToDouble(tabela2.Rows[i][5]);
+            }
+
+
+            Chart4.Series["Series1"].Points.DataBindXY(x, y);
+            Chart4.Series["Series1"].IsValueShownAsLabel = true;
+            Chart4.ChartAreas[0].AxisY.Maximum = Double.NaN;
+            Chart4.ChartAreas[0].AxisY.IsStartedFromZero = false;
+            Chart4.ChartAreas[0].AxisY.Minimum = Double.NaN;
+            Chart4.ChartAreas[0].RecalculateAxesScale();
         }
         public void Load5()
         {
+            DataTable tabela2 = new DataTable();
             DataTable tabela = new DataTable();
             var server = new MongoClient(MongoUrl.Create("mongodb://localhost:27017"));
             IMongoDatabase database = server.GetDatabase("prvaDB");
@@ -348,9 +476,53 @@ namespace mongodb
 
             GridView5.DataSource = tabela;
             GridView5.DataBind();
+
+            DataColumn k1 = new DataColumn("Датум");
+            DataColumn k2 = new DataColumn("Назив на Банка");
+            DataColumn k3 = new DataColumn("Валута");
+            DataColumn k4 = new DataColumn("Куповен");
+            DataColumn k5 = new DataColumn("Среден");
+            DataColumn k6 = new DataColumn("Продажен");
+
+            tabela2.Columns.Add(k1);
+            tabela2.Columns.Add(k2);
+            tabela2.Columns.Add(k3);
+            tabela2.Columns.Add(k4);
+            tabela2.Columns.Add(k5);
+            tabela2.Columns.Add(k6);
+            var query2 = from p in collection.AsQueryable<Info>() where p.Valuta == "sek" select p;
+            foreach (var t in query2)
+            {
+
+                if (t.Date == null || t.Banka.Name == null || t.Valuta == null || t.Kupoven == 0 || t.Prodazen == 0 || t.Sreden == 0)
+                {
+                }
+                else
+                {
+                    tabela2.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen, t.Sreden);
+                }
+            }
+
+            string[] x = new string[tabela2.Rows.Count];
+            double[] y = new double[tabela2.Rows.Count];
+
+            for (int i = 0; i < tabela2.Rows.Count; i++)
+            {
+                x[i] = tabela2.Rows[i][0].ToString();
+                y[i] = Convert.ToDouble(tabela2.Rows[i][5]);
+            }
+
+
+            Chart5.Series["Series1"].Points.DataBindXY(x, y);
+            Chart5.Series["Series1"].IsValueShownAsLabel = true;
+            Chart5.ChartAreas[0].AxisY.Maximum = Double.NaN;
+            Chart5.ChartAreas[0].AxisY.IsStartedFromZero = false;
+            Chart5.ChartAreas[0].AxisY.Minimum = Double.NaN;
+            Chart5.ChartAreas[0].RecalculateAxesScale();
         }
         public void Load6()
         {
+            DataTable tabela2 = new DataTable();
             DataTable tabela = new DataTable();
             var server = new MongoClient(MongoUrl.Create("mongodb://localhost:27017"));
             IMongoDatabase database = server.GetDatabase("prvaDB");
@@ -378,9 +550,53 @@ namespace mongodb
 
             GridView6.DataSource = tabela;
             GridView6.DataBind();
+
+            DataColumn k1 = new DataColumn("Датум");
+            DataColumn k2 = new DataColumn("Назив на Банка");
+            DataColumn k3 = new DataColumn("Валута");
+            DataColumn k4 = new DataColumn("Куповен");
+            DataColumn k5 = new DataColumn("Среден");
+            DataColumn k6 = new DataColumn("Продажен");
+
+            tabela2.Columns.Add(k1);
+            tabela2.Columns.Add(k2);
+            tabela2.Columns.Add(k3);
+            tabela2.Columns.Add(k4);
+            tabela2.Columns.Add(k5);
+            tabela2.Columns.Add(k6);
+            var query2 = from p in collection.AsQueryable<Info>() where p.Valuta == "nok" select p;
+            foreach (var t in query2)
+            {
+
+                if (t.Date == null || t.Banka.Name == null || t.Valuta == null || t.Kupoven == 0 || t.Prodazen == 0 || t.Sreden == 0)
+                {
+                }
+                else
+                {
+                    tabela2.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen, t.Sreden);
+                }
+            }
+
+            string[] x = new string[tabela2.Rows.Count];
+            double[] y = new double[tabela2.Rows.Count];
+
+            for (int i = 0; i < tabela2.Rows.Count; i++)
+            {
+                x[i] = tabela2.Rows[i][0].ToString();
+                y[i] = Convert.ToDouble(tabela2.Rows[i][5]);
+            }
+
+
+            Chart6.Series["Series1"].Points.DataBindXY(x, y);
+            Chart6.Series["Series1"].IsValueShownAsLabel = true;
+            Chart6.ChartAreas[0].AxisY.Maximum = Double.NaN;
+            Chart6.ChartAreas[0].AxisY.IsStartedFromZero = false;
+            Chart6.ChartAreas[0].AxisY.Minimum = Double.NaN;
+            Chart6.ChartAreas[0].RecalculateAxesScale();
         }
         public void Load7()
         {
+            DataTable tabela2 = new DataTable();
             DataTable tabela = new DataTable();
             var server = new MongoClient(MongoUrl.Create("mongodb://localhost:27017"));
             IMongoDatabase database = server.GetDatabase("prvaDB");
@@ -403,14 +619,58 @@ namespace mongodb
             var query = from p in collection.AsQueryable<Info>() where p.Valuta == "dkk" && p.Date == Calendar1.SelectedDate.ToString("dd.MM.yyyy") select p;
             foreach (var t in query)
             {
-                tabela.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen);
+                
+                tabela.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven,t.Prodazen);
             }
 
             GridView7.DataSource = tabela;
             GridView7.DataBind();
+            DataColumn k1 = new DataColumn("Датум");
+            DataColumn k2 = new DataColumn("Назив на Банка");
+            DataColumn k3 = new DataColumn("Валута");
+            DataColumn k4 = new DataColumn("Куповен");
+            DataColumn k5 = new DataColumn("Среден");
+            DataColumn k6 = new DataColumn("Продажен");
+
+            tabela2.Columns.Add(k1);
+            tabela2.Columns.Add(k2);
+            tabela2.Columns.Add(k3);
+            tabela2.Columns.Add(k4);
+            tabela2.Columns.Add(k5);
+            tabela2.Columns.Add(k6);
+            var query2 = from p in collection.AsQueryable<Info>() where p.Valuta == "dkk" select p;
+            foreach (var t in query2)
+            {
+
+                if (t.Date == null || t.Banka.Name == null || t.Valuta == null || t.Kupoven == 0 || t.Prodazen == 0 || t.Sreden == 0)
+                {
+                }
+                else
+                {
+                    tabela2.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen, t.Sreden);
+                }
+            }
+
+            string[] x = new string[tabela2.Rows.Count];
+            double[] y = new double[tabela2.Rows.Count];
+
+            for (int i = 0; i < tabela2.Rows.Count; i++)
+            {
+                x[i] = tabela2.Rows[i][0].ToString();
+                y[i] = Convert.ToDouble(tabela2.Rows[i][5]);
+            }
+
+
+            Chart7.Series["Series1"].Points.DataBindXY(x, y);
+            Chart7.Series["Series1"].IsValueShownAsLabel = true;
+            Chart7.ChartAreas[0].AxisY.Maximum = Double.NaN;
+            Chart7.ChartAreas[0].AxisY.IsStartedFromZero = false;
+            Chart7.ChartAreas[0].AxisY.Minimum = Double.NaN;
+            Chart7.ChartAreas[0].RecalculateAxesScale();
         }
         public void Load8()
         {
+            DataTable tabela2 = new DataTable();
             DataTable tabela = new DataTable();
             var server = new MongoClient(MongoUrl.Create("mongodb://localhost:27017"));
             IMongoDatabase database = server.GetDatabase("prvaDB");
@@ -438,6 +698,49 @@ namespace mongodb
 
             GridView8.DataSource = tabela;
             GridView8.DataBind();
+
+            DataColumn k1 = new DataColumn("Датум");
+            DataColumn k2 = new DataColumn("Назив на Банка");
+            DataColumn k3 = new DataColumn("Валута");
+            DataColumn k4 = new DataColumn("Куповен");
+            DataColumn k5 = new DataColumn("Среден");
+            DataColumn k6 = new DataColumn("Продажен");
+
+            tabela2.Columns.Add(k1);
+            tabela2.Columns.Add(k2);
+            tabela2.Columns.Add(k3);
+            tabela2.Columns.Add(k4);
+            tabela2.Columns.Add(k5);
+            tabela2.Columns.Add(k6);
+            var query2 = from p in collection.AsQueryable<Info>() where p.Valuta == "cad" select p;
+            foreach (var t in query2)
+            {
+
+                if (t.Date == null || t.Banka.Name == null || t.Valuta == null || t.Kupoven == 0 || t.Prodazen == 0 || t.Sreden == 0)
+                {
+                }
+                else
+                {
+                    tabela2.Rows.Add(t.Date, t.Banka.Name, t.Valuta, t.Kupoven, t.Prodazen, t.Sreden);
+                }
+            }
+
+            string[] x = new string[tabela2.Rows.Count];
+            double[] y = new double[tabela2.Rows.Count];
+
+            for (int i = 0; i < tabela2.Rows.Count; i++)
+            {
+                x[i] = tabela2.Rows[i][0].ToString();
+                y[i] = Convert.ToDouble(tabela2.Rows[i][5]);
+            }
+
+
+            Chart8.Series["Series1"].Points.DataBindXY(x, y);
+            Chart8.Series["Series1"].IsValueShownAsLabel = true;
+            Chart8.ChartAreas[0].AxisY.Maximum = Double.NaN;
+            Chart8.ChartAreas[0].AxisY.IsStartedFromZero = false;
+            Chart8.ChartAreas[0].AxisY.Minimum = Double.NaN;
+            Chart8.ChartAreas[0].RecalculateAxesScale();
         }
         protected void View1_Load(object sender, EventArgs e)
         {
@@ -675,6 +978,11 @@ namespace mongodb
                     ViewState["SortExpression"] = "Kupoven";
                 }
 
+                //if (ViewState["SortExpression"] == null)
+                //{
+                //    ViewState["SortExpression"] = "Prodazen";
+                //}
+
                 return ViewState["SortExpression"].ToString();
             }
             set { ViewState["SortExpression"] = value; }
@@ -843,7 +1151,7 @@ namespace mongodb
             {
 
                 DataTable tabela = new DataTable();
-                var query = from p in collection.AsQueryable<Info>() where p.Valuta == "gbp" && p.Date == Calendar1.SelectedDate.ToString("dd.MM.yyyy") select p;
+                var query = from p in collection.AsQueryable<Info>() where p.Valuta == "sek" && p.Date == Calendar1.SelectedDate.ToString("dd.MM.yyyy") select p;
 
                 DataColumn dc1 = new DataColumn("Датум");
                 DataColumn dc5 = new DataColumn("Назив на Банка");

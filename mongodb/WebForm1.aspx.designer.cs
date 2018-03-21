@@ -157,6 +157,15 @@ namespace mongodb {
         protected global::System.Web.UI.WebControls.GridView GridView2;
         
         /// <summary>
+        /// Chart2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart2;
+        
+        /// <summary>
         /// View3 control.
         /// </summary>
         /// <remarks>
@@ -173,6 +182,15 @@ namespace mongodb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView3;
+        
+        /// <summary>
+        /// Chart3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart3;
         
         /// <summary>
         /// View4 control.
@@ -193,6 +211,15 @@ namespace mongodb {
         protected global::System.Web.UI.WebControls.GridView GridView4;
         
         /// <summary>
+        /// Chart4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart4;
+        
+        /// <summary>
         /// View5 control.
         /// </summary>
         /// <remarks>
@@ -209,6 +236,15 @@ namespace mongodb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView5;
+        
+        /// <summary>
+        /// Chart5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart5;
         
         /// <summary>
         /// View6 control.
@@ -229,6 +265,15 @@ namespace mongodb {
         protected global::System.Web.UI.WebControls.GridView GridView6;
         
         /// <summary>
+        /// Chart6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart6;
+        
+        /// <summary>
         /// View7 control.
         /// </summary>
         /// <remarks>
@@ -247,6 +292,15 @@ namespace mongodb {
         protected global::System.Web.UI.WebControls.GridView GridView7;
         
         /// <summary>
+        /// Chart7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart7;
+        
+        /// <summary>
         /// View8 control.
         /// </summary>
         /// <remarks>
@@ -263,5 +317,14 @@ namespace mongodb {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView GridView8;
+        
+        /// <summary>
+        /// Chart8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart Chart8;
     }
 }
