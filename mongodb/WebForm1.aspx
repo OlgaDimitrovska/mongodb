@@ -136,7 +136,7 @@
                       <p>
                           <asp:Chart ID="Chart3" runat="server" style="text-align: center" Width="1037px">
                               <Series>
-                                  <asp:Series ChartType="Line" Name="Series1">
+                                  <asp:Series ChartType="Line" Name="Series1" BorderWidth="4">
                                   </asp:Series>
                               </Series>
                               <ChartAreas>
@@ -162,7 +162,7 @@
                       <p>
                           <asp:Chart ID="Chart4" runat="server" style="text-align: center" Width="1037px">
                               <Series>
-                                  <asp:Series ChartType="Line" Name="Series1">
+                                  <asp:Series ChartType="Line" Name="Series1" BorderWidth="4">
                                   </asp:Series>
                               </Series>
                               <ChartAreas>
@@ -188,7 +188,7 @@
                       <p>
                           <asp:Chart ID="Chart5" runat="server" style="text-align: center" Width="1037px">
                               <Series>
-                                  <asp:Series ChartType="Line" Name="Series1">
+                                  <asp:Series ChartType="Line" Name="Series1" BorderWidth="4">
                                   </asp:Series>
                               </Series>
                               <ChartAreas>
@@ -214,7 +214,7 @@
                       <p>
                           <asp:Chart ID="Chart6" runat="server" style="text-align: center" Width="1037px">
                               <Series>
-                                  <asp:Series ChartType="Line" Name="Series1">
+                                  <asp:Series ChartType="Line" Name="Series1" BorderWidth="4">
                                   </asp:Series>
                               </Series>
                               <ChartAreas>
@@ -240,7 +240,7 @@
                       <p>
                           <asp:Chart ID="Chart7" runat="server" style="text-align: center" Width="1037px">
                               <Series>
-                                  <asp:Series ChartType="Line" Name="Series1">
+                                  <asp:Series ChartType="Line" Name="Series1" BorderWidth="4">
                                   </asp:Series>
                               </Series>
                               <ChartAreas>
@@ -266,7 +266,7 @@
                       <p>
                           <asp:Chart ID="Chart8" runat="server" style="text-align: center" Width="1037px">
                               <Series>
-                                  <asp:Series ChartType="Line" Name="Series1">
+                                  <asp:Series ChartType="Line" Name="Series1" BorderWidth="4">
                                   </asp:Series>
                               </Series>
                               <ChartAreas>

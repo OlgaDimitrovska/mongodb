@@ -311,8 +311,18 @@ namespace mongodb
 
             Chart2.Series["Series1"].Points.DataBindXY(x, y);
             Chart2.Series["Series1"].IsValueShownAsLabel = true;
+            Chart2.Series["Series1"].ToolTip = "Датум: #VALX Среден курс на НБРМ: #VALY";
+            Chart2.Series["Series1"].Font = new System.Drawing.Font("Helvetica", 12);
+            Chart2.Series["Series1"].MarkerSize = 20;
+            Chart2.Series["Series1"].MarkerStyle = MarkerStyle.Diamond;
+
+            Chart2.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
             Chart2.ChartAreas[0].AxisY.Maximum = Double.NaN;
             Chart2.ChartAreas[0].AxisY.IsStartedFromZero = false;
+            Chart2.ChartAreas[0].AxisX.LabelAutoFitMaxFontSize = 18;
+            Chart2.ChartAreas[0].AxisX.IsLabelAutoFit = true;
+            //Chart1.ChartAreas[0].AxisX.LabelStyle.Angle = -10;
+            Chart2.ChartAreas[0].AxisY.LabelAutoFitMaxFontSize = 18;
             Chart2.ChartAreas[0].AxisY.Minimum = Double.NaN;
             Chart2.ChartAreas[0].RecalculateAxesScale();
         }
@@ -385,8 +395,18 @@ namespace mongodb
 
             Chart3.Series["Series1"].Points.DataBindXY(x, y);
             Chart3.Series["Series1"].IsValueShownAsLabel = true;
+            Chart3.Series["Series1"].ToolTip = "Датум: #VALX Среден курс на НБРМ: #VALY";
+            Chart3.Series["Series1"].Font = new System.Drawing.Font("Helvetica", 12);
+            Chart3.Series["Series1"].MarkerSize = 20;
+            Chart3.Series["Series1"].MarkerStyle = MarkerStyle.Diamond;
+
+            Chart3.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
             Chart3.ChartAreas[0].AxisY.Maximum = Double.NaN;
             Chart3.ChartAreas[0].AxisY.IsStartedFromZero = false;
+            Chart3.ChartAreas[0].AxisX.LabelAutoFitMaxFontSize = 18;
+            Chart3.ChartAreas[0].AxisX.IsLabelAutoFit = true;
+            //Chart1.ChartAreas[0].AxisX.LabelStyle.Angle = -10;
+            Chart3.ChartAreas[0].AxisY.LabelAutoFitMaxFontSize = 18;
             Chart3.ChartAreas[0].AxisY.Minimum = Double.NaN;
             Chart3.ChartAreas[0].RecalculateAxesScale();
         }
@@ -460,8 +480,18 @@ namespace mongodb
 
             Chart4.Series["Series1"].Points.DataBindXY(x, y);
             Chart4.Series["Series1"].IsValueShownAsLabel = true;
+            Chart4.Series["Series1"].ToolTip = "Датум: #VALX Среден курс на НБРМ: #VALY";
+            Chart4.Series["Series1"].Font = new System.Drawing.Font("Helvetica", 12);
+            Chart4.Series["Series1"].MarkerSize = 20;
+            Chart4.Series["Series1"].MarkerStyle = MarkerStyle.Diamond;
+
+            Chart4.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
             Chart4.ChartAreas[0].AxisY.Maximum = Double.NaN;
             Chart4.ChartAreas[0].AxisY.IsStartedFromZero = false;
+            Chart4.ChartAreas[0].AxisX.LabelAutoFitMaxFontSize = 18;
+            Chart4.ChartAreas[0].AxisX.IsLabelAutoFit = true;
+            //Chart1.ChartAreas[0].AxisX.LabelStyle.Angle = -10;
+            Chart4.ChartAreas[0].AxisY.LabelAutoFitMaxFontSize = 18;
             Chart4.ChartAreas[0].AxisY.Minimum = Double.NaN;
             Chart4.ChartAreas[0].RecalculateAxesScale();
         }
@@ -534,8 +564,18 @@ namespace mongodb
 
             Chart5.Series["Series1"].Points.DataBindXY(x, y);
             Chart5.Series["Series1"].IsValueShownAsLabel = true;
+            Chart5.Series["Series1"].ToolTip = "Датум: #VALX Среден курс на НБРМ: #VALY";
+            Chart5.Series["Series1"].Font = new System.Drawing.Font("Helvetica", 12);
+            Chart5.Series["Series1"].MarkerSize = 20;
+            Chart5.Series["Series1"].MarkerStyle = MarkerStyle.Diamond;
+
+            Chart5.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
             Chart5.ChartAreas[0].AxisY.Maximum = Double.NaN;
             Chart5.ChartAreas[0].AxisY.IsStartedFromZero = false;
+            Chart5.ChartAreas[0].AxisX.LabelAutoFitMaxFontSize = 18;
+            Chart5.ChartAreas[0].AxisX.IsLabelAutoFit = true;
+            //Chart1.ChartAreas[0].AxisX.LabelStyle.Angle = -10;
+            Chart5.ChartAreas[0].AxisY.LabelAutoFitMaxFontSize = 18;
             Chart5.ChartAreas[0].AxisY.Minimum = Double.NaN;
             Chart5.ChartAreas[0].RecalculateAxesScale();
         }
@@ -608,8 +648,18 @@ namespace mongodb
 
             Chart6.Series["Series1"].Points.DataBindXY(x, y);
             Chart6.Series["Series1"].IsValueShownAsLabel = true;
+            Chart6.Series["Series1"].ToolTip = "Датум: #VALX Среден курс на НБРМ: #VALY";
+            Chart6.Series["Series1"].Font = new System.Drawing.Font("Helvetica", 12);
+            Chart6.Series["Series1"].MarkerSize = 20;
+            Chart6.Series["Series1"].MarkerStyle = MarkerStyle.Diamond;
+
+            Chart6.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
             Chart6.ChartAreas[0].AxisY.Maximum = Double.NaN;
             Chart6.ChartAreas[0].AxisY.IsStartedFromZero = false;
+            Chart6.ChartAreas[0].AxisX.LabelAutoFitMaxFontSize = 18;
+            Chart6.ChartAreas[0].AxisX.IsLabelAutoFit = true;
+            //Chart1.ChartAreas[0].AxisX.LabelStyle.Angle = -10;
+            Chart6.ChartAreas[0].AxisY.LabelAutoFitMaxFontSize = 18;
             Chart6.ChartAreas[0].AxisY.Minimum = Double.NaN;
             Chart6.ChartAreas[0].RecalculateAxesScale();
         }
@@ -682,8 +732,18 @@ namespace mongodb
 
             Chart7.Series["Series1"].Points.DataBindXY(x, y);
             Chart7.Series["Series1"].IsValueShownAsLabel = true;
+            Chart7.Series["Series1"].ToolTip = "Датум: #VALX Среден курс на НБРМ: #VALY";
+            Chart7.Series["Series1"].Font = new System.Drawing.Font("Helvetica", 12);
+            Chart7.Series["Series1"].MarkerSize = 20;
+            Chart7.Series["Series1"].MarkerStyle = MarkerStyle.Diamond;
+
+            Chart7.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
             Chart7.ChartAreas[0].AxisY.Maximum = Double.NaN;
             Chart7.ChartAreas[0].AxisY.IsStartedFromZero = false;
+            Chart7.ChartAreas[0].AxisX.LabelAutoFitMaxFontSize = 18;
+            Chart7.ChartAreas[0].AxisX.IsLabelAutoFit = true;
+            //Chart1.ChartAreas[0].AxisX.LabelStyle.Angle = -10;
+            Chart7.ChartAreas[0].AxisY.LabelAutoFitMaxFontSize = 18;
             Chart7.ChartAreas[0].AxisY.Minimum = Double.NaN;
             Chart7.ChartAreas[0].RecalculateAxesScale();
         }
@@ -756,8 +816,18 @@ namespace mongodb
 
             Chart8.Series["Series1"].Points.DataBindXY(x, y);
             Chart8.Series["Series1"].IsValueShownAsLabel = true;
+            Chart8.Series["Series1"].ToolTip = "Датум: #VALX Среден курс на НБРМ: #VALY";
+            Chart8.Series["Series1"].Font = new System.Drawing.Font("Helvetica", 12);
+            Chart8.Series["Series1"].MarkerSize = 20;
+            Chart8.Series["Series1"].MarkerStyle = MarkerStyle.Diamond;
+
+            Chart8.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
             Chart8.ChartAreas[0].AxisY.Maximum = Double.NaN;
             Chart8.ChartAreas[0].AxisY.IsStartedFromZero = false;
+            Chart8.ChartAreas[0].AxisX.LabelAutoFitMaxFontSize = 18;
+            Chart8.ChartAreas[0].AxisX.IsLabelAutoFit = true;
+            //Chart1.ChartAreas[0].AxisX.LabelStyle.Angle = -10;
+            Chart8.ChartAreas[0].AxisY.LabelAutoFitMaxFontSize = 18;
             Chart8.ChartAreas[0].AxisY.Minimum = Double.NaN;
             Chart8.ChartAreas[0].RecalculateAxesScale();
         }
