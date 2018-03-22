@@ -11,13 +11,17 @@
     <style type="text/css">
         .auto-style1 {
             width: 1036px;
+           
         }
         .auto-style2 {
             height: 201px;
         }
        
     </style>
-   
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" /> 
+<link rel="stylesheet" href="/resources/demos/style.css" />
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>   
     <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -26,21 +30,22 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div style="text-align: center">
-    </div>
-        <asp:Calendar CssClass="" ID="Calendar1" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" OnSelectionChanged="Calendar1_SelectionChanged" style="text-align: center" Width="200px" SelectedDate="03/16/2018 13:43:47">
-            <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
-            <NextPrevStyle VerticalAlign="Bottom" />
-            <OtherMonthDayStyle ForeColor="#808080" />
-            <SelectedDayStyle BackColor="#666666" Font-Bold="True" ForeColor="White" />
-            <SelectorStyle BackColor="#CCCCCC" />
-            <TitleStyle BackColor="#999999" BorderColor="Black" Font-Bold="True" />
-            <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
-            <WeekendDayStyle BackColor="#FFFFCC" />
-        </asp:Calendar>
-        <p>
-            &nbsp;</p>
-         <table width="80%" align="center">
+   
+       <p></p>
+        <div style="width:10%; margin: 0 auto;">
+            <asp:Calendar ID="Calendar1" runat="server" BackColor="White" BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" OnSelectionChanged="Calendar1_SelectionChanged" Style="text-align: center" Width="100%" SelectedDate="03/16/2018 13:43:47">
+                <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
+                <NextPrevStyle VerticalAlign="Bottom" />
+                <OtherMonthDayStyle ForeColor="#808080" />
+                <SelectedDayStyle BackColor="#666666" Font-Bold="True" ForeColor="White" />
+                <SelectorStyle BackColor="#CCCCCC" />
+                <TitleStyle BackColor="#999999" BorderColor="Black" Font-Bold="True" />
+                <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
+                <WeekendDayStyle BackColor="#FFFFCC" />
+            </asp:Calendar>
+        </div>
+        <p></p>
+     <table width="50%" align="center" style="background-color:white">
       <tr>
         <td>
            <asp:Button Text="EUR" BorderStyle="None" ID="Tab1" CssClass="Clicked" runat="server"
@@ -66,25 +71,26 @@
             <asp:Button Text="CAD" BorderStyle="None" ID="Tab8" CssClass="Initial" runat="server"
 
               OnClick="Tab8_Click" />
-          <asp:MultiView ID="MainView" runat="server">
+          <asp:MultiView ID="MainView" runat="server" >
             <asp:View ID="View1" runat="server" OnLoad="View1_Load">
-              <table class="table-bordered table-hover" style="width: 100%; border-width: 1px; border-color: #666; border-style: solid">
+              <table class="table-bordered" width: 100%; border-width: 1px; border-color: #666; border-style: solid">
                 <tr>
                   <td class="auto-style1">
                     <h3>
-                        <span style="text-align: center">
-                        <asp:GridView ID="GridView1" runat="server" AllowSorting="True" OnSorting="GridView1_Sorting" style="text-align: left">
+                        <span style="text-align: center;">
+                        <asp:GridView ID="GridView1" runat="server" AllowSorting="True" OnSorting="GridView1_Sorting" style="text-align: left" >
                         </asp:GridView>
                         </span></h3>
                       <p>
                           <asp:Chart ID="Chart1" runat="server" style="text-align: center" Width="1037px" >
                               <Series>
-                                  <asp:Series ChartType="Line" Name="Series1">
+                                  <asp:Series ChartType="Line" Name="Series1" BorderWidth="4">
                                   </asp:Series>
                               </Series>
                               <ChartAreas>
                                   <asp:ChartArea Name="ChartArea1">
-                                  <%--<AxisY  Minimum="Double.NaN" Maximum="Double.NaN"> </AxisY>--%>
+                                  <%--<AxisY  LabelAutoFitMaxFontSize="18"> </AxisY>--%>
+                                  <%--<AxisX  LabelAutoFitMaxFontSize="18" > </AxisX>--%>
                                   </asp:ChartArea>
                               </ChartAreas>
                           </asp:Chart>
@@ -94,7 +100,7 @@
               </table>
             </asp:View>
             <asp:View ID="View2" runat="server" OnLoad="View2_Load">
-              <table style="width: 100%; border-width: 1px; border-color: #666; border-style: solid">
+              <table  class="table-bordered" style="width: 100%; border-width: 1px; border-color: #666; border-style: solid">
                 <tr>
                   <td class="auto-style2">
                       <h3>
@@ -104,12 +110,12 @@
                       <p>
                           <asp:Chart ID="Chart2" runat="server" style="text-align: center" Width="1037px">
                               <Series>
-                                  <asp:Series ChartType="Line" Name="Series1">
+                                  <asp:Series ChartType="Line" Name="Series1" BorderWidth="4" >
                                   </asp:Series>
                               </Series>
                               <ChartAreas>
                                   <asp:ChartArea Name="ChartArea1">
-                                      <%--<AxisY  Minimum="Double.NaN" Maximum="Double.NaN"> </AxisY>--%>
+                                      <AxisY  LabelAutoFitMaxFontSize="18"> </AxisY>
                                   </asp:ChartArea>
                               </ChartAreas>
                           </asp:Chart>
@@ -119,7 +125,7 @@
               </table>
             </asp:View>
             <asp:View ID="View3" runat="server" OnLoad="View3_Load">
-              <table style="width: 100%; border-width: 1px; border-color: #666; border-style: solid">
+              <table class="table-bordered" style="width: 100%; border-width: 1px; border-color: #666; border-style: solid">
                 <tr>
                   <td>
                     <h3>
@@ -145,7 +151,7 @@
               </table>
             </asp:View>
               <asp:View ID="View4" runat="server" OnLoad="View4_Load">
-              <table style="width: 100%; border-width: 1px; border-color: #666; border-style: solid">
+              <table class="table-bordered" style="width: 100%; border-width: 1px; border-color: #666; border-style: solid">
                 <tr>
                   <td>
                     <h3>
@@ -171,7 +177,7 @@
               </table>
             </asp:View>
               <asp:View ID="View5" runat="server" OnLoad="View5_Load">
-              <table style="width: 100%; border-width: 1px; border-color: #666; border-style: solid">
+              <table class="table-bordered" style="width: 100%; border-width: 1px; border-color: #666; border-style: solid">
                 <tr>
                   <td>
                     <h3>
@@ -197,7 +203,7 @@
               </table>
             </asp:View>
               <asp:View ID="View6" runat="server" OnLoad="View6_Load">
-              <table style="width: 100%; border-width: 1px; border-color: #666; border-style: solid">
+              <table class="table-bordered" style="width: 100%; border-width: 1px; border-color: #666; border-style: solid">
                 <tr>
                   <td>
                     <h3>
@@ -223,7 +229,7 @@
               </table>
             </asp:View>
               <asp:View ID="View7" runat="server" OnLoad="View7_Load">
-              <table style="width: 100%; border-width: 1px; border-color: #666; border-style: solid">
+              <table class="table-bordered" style="width: 100%; border-width: 1px; border-color: #666; border-style: solid">
                 <tr>
                   <td>
                     <h3>
@@ -249,7 +255,7 @@
               </table>
             </asp:View>
               <asp:View ID="View8" runat="server" OnLoad="View8_Load">
-              <table style="width: 100%; border-width: 1px; border-color: #666; border-style: solid">
+              <table class="table-bordered" style="width: 100%; border-width: 1px; border-color: #666; border-style: solid">
                 <tr>
                   <td>
                     <h3>

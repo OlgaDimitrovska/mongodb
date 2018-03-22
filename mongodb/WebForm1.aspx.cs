@@ -15,6 +15,8 @@ using System.Threading;
 using System.Linq.Expressions;
 using System.Collections.Specialized;
 using System.Collections;
+using System.Web.UI.DataVisualization.Charting;
+using System.Drawing;
 
 namespace mongodb
 {
@@ -156,7 +158,7 @@ namespace mongodb
             DataColumn dc2 = new DataColumn("Валута");
             DataColumn dc3 = new DataColumn("Куповен");
             DataColumn dc4 = new DataColumn("Продажен");
-            
+
 
 
 
@@ -176,6 +178,7 @@ namespace mongodb
                 
             }
 
+            //GridView1.HeaderRow.ForeColor = Color.Blue;
             GridView1.DataSource = tabela;
             GridView1.DataBind();
 
@@ -207,18 +210,34 @@ namespace mongodb
 
             string[] x = new string[tabela2.Rows.Count];
             double[] y = new double[tabela2.Rows.Count];
+           
 
             for (int i = 0; i < tabela2.Rows.Count; i++)
             {
                 x[i] = tabela2.Rows[i][0].ToString();
                 y[i] = Convert.ToDouble(tabela2.Rows[i][5]);
+                
             }
            
+            //foreach(DataRow row in tabela.Rows)
+            //{
+            //    tabela.Rows[0]
+            //}
             
             Chart1.Series["Series1"].Points.DataBindXY(x,y);
             Chart1.Series["Series1"].IsValueShownAsLabel=true;
+            Chart1.Series["Series1"].ToolTip = "Датум: #VALX Среден курс на НБРМ: #VALY";
+            Chart1.Series["Series1"].Font = new System.Drawing.Font("Helvetica", 12);
+            Chart1.Series["Series1"].MarkerSize = 20;
+            Chart1.Series["Series1"].MarkerStyle = MarkerStyle.Diamond;
+
+            Chart1.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
             Chart1.ChartAreas[0].AxisY.Maximum = Double.NaN;
             Chart1.ChartAreas[0].AxisY.IsStartedFromZero = false;
+            Chart1.ChartAreas[0].AxisX.LabelAutoFitMaxFontSize = 18;
+            Chart1.ChartAreas[0].AxisX.IsLabelAutoFit = true;
+            //Chart1.ChartAreas[0].AxisX.LabelStyle.Angle = -10;
+            Chart1.ChartAreas[0].AxisY.LabelAutoFitMaxFontSize = 18;
             Chart1.ChartAreas[0].AxisY.Minimum = Double.NaN;
             Chart1.ChartAreas[0].RecalculateAxesScale();
 
@@ -1292,7 +1311,7 @@ namespace mongodb
             catch { }
         }
 
-      
+       
     }
 
 }
